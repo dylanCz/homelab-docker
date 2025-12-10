@@ -11,7 +11,7 @@ services:
     ports:
       - "9120:9120"
     environment:
-      TZ: Europe/Berlin
+      TZ: Europe/London
       GIT_ACCESS_TOKEN: xxx
       <<: *poll-config
     volumes:
