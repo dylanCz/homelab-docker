@@ -12,10 +12,15 @@ services:
       - "9120:9120"
     environment:
       TZ: Europe/London
-      GIT_ACCESS_TOKEN: xxx
+      GIT_ACCESS_TOKEN: xxx # Replace with Github PAT
       <<: *poll-config
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/dylan/Docker/data:/data
+    labels:
+      - "glance.name=DocoCD"
+      - "glance.icon=si:flux"
+      - "glance.description=GitOps"
+      - "glance.id=dococd"
 volumes:
   data:
