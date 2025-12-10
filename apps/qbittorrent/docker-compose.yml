@@ -1,0 +1,25 @@
+version: "3.5"
+
+services:
+  qbittorrent:
+    container_name: qbittorrent
+    image: linuxserver/qbittorrent:5.1.4
+    restart: unless-stopped
+    network_mode: "container:gluetun"
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: "Europe/London"
+      WEBUI_PORT: 8080
+    volumes:
+      - /home/dylan/Docker/QBitTorrent/config:/config
+      - /home/dylan/Docker/data:/data
+    labels:
+      - "glance.name=QBitTorrent"
+      - "glance.icon=si:qbittorrent"
+      - "glance.url=http://qbittorrent.home.local/"
+      - "glance.description=Torrent Client"
+
+networks:
+  lan:
+    external: true

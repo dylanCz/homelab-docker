@@ -1,0 +1,29 @@
+version: "3.5"
+
+services:
+  sonarr:
+    container_name: sonarr
+    image: linuxserver/sonarr:4.0.16
+    restart: unless-stopped
+    logging:
+      driver: json-file
+    network_mode: "container:gluetun"
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: "Europe/London"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - /home/dylan/Docker/Sonarr/config:/config
+      - /home/dylan/Docker/data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
+      - "glance.name=Sonarr"
+      - "glance.icon=si:sonarr"
+      - "glance.url=http://sonarr.home.local/"
+      - "glance.description=TV Show Manager"
+
+networks:
+  lan:
+    external: true

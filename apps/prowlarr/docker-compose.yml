@@ -1,0 +1,29 @@
+version: "3.5"
+
+services:
+  prowlarr:
+    container_name: prowlarr
+    image: linuxserver/prowlarr:2.3.0
+    restart: unless-stopped
+    logging:
+      driver: json-file
+    network_mode: "container:gluetun"
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: "Europe/London"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - /home/dylan/Docker/Prowlarr/config:/config
+      - /home/dylan/Docker/data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.prowlarr.loadbalancer.server.port=9696"
+      - "glance.name=Prowlarr"
+      - "glance.icon=si:prowlarr"
+      - "glance.url=http://prowlarr.home.local/"
+      - "glance.description=Indexer Manager"
+
+networks:
+  lan:
+    external: true

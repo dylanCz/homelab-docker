@@ -1,0 +1,41 @@
+version: "3.5"
+
+services:
+  gluetun:
+    container_name: gluetun
+    image: qmcgaw/gluetun:v3.40.3
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 6881:6881 # qbittorrent
+      - 6881:6881/udp # qbittorrent
+      - 7878:7878 # radarr
+      - 8989:8989 # sonarr
+      - 9696:9696 # prowlarr
+    networks:
+      lan:
+        ipv4_address: 172.19.0.9
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.qbittorrent.rule=Host(`qbittorrent.home.local`)"
+      - "traefik.http.services.qbittorrent.loadbalancer.server.port=8080"
+      - "traefik.http.routers.radarr.rule=Host(`radarr.home.local`)"
+      - "traefik.http.routers.radarr.service=radarr"
+      - "traefik.http.routers.prowlarr.rule=Host(`prowlarr.home.local`)"
+      - "traefik.http.routers.prowlarr.service=prowlarr"
+      - "traefik.http.routers.sonarr.rule=Host(`sonarr.home.local`)"
+      - "traefik.http.routers.sonarr.service=sonarr"
+      - "glance.name=Gluetun"
+      - "glance.icon=si:gluetun"
+      - "glance.url=http://gluetun.home.local/"
+      - "glance.description=VPN"
+    environment:
+      - "VPN_SERVICE_PROVIDER=airvpn"
+      - "SERVER_COUNTRIES=United Kingdom"
+    volumes:
+      - /home/dylan/Docker/Gluetun:/gluetun
+
+networks:
+  lan:
+    external: true

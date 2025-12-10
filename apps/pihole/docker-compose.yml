@@ -1,0 +1,42 @@
+version: "3.5"
+
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:2025.11.1
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 8899:80
+    networks:
+      lan:
+        ipv4_address: 172.19.0.13
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    environment:
+      TZ: "Europe/London"
+      WEBPASSWORD: "${WEBPASSWORD}"
+      PIHOLE_DNS_: "149.112.112.112;1.1.1.1"
+      ServerIP: "192.168.0.37" # Actual server IP. Matches DHCP conf file IP
+      VIRTUAL_HOST: "pihole.home.local" # Same as port traefik config
+      WEBTHEME: "default-dark"
+      PIHOLE_DOMAIN: "lan"
+    volumes:
+      - /home/dylan/Docker/pihole/config:/etc/pihole/
+      - /home/dylan/Docker/dnsmasq.d:/etc/dnsmasq.d/
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pihole.rule=Host(`pihole.home.local`)"
+      - "traefik.http.services.pihole.loadbalancer.server.port=80"
+      - "glance.name=Pi-hole"
+      - "glance.icon=si:pihole"
+      - "glance.url=http://pihole.home.local/"
+      - "glance.description=Ad-blocking and DNS"
+
+networks:
+  lan:
+    external: true

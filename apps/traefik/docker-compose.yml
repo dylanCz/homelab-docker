@@ -1,0 +1,33 @@
+version: "3.5"
+
+services:
+  traefik:
+    container_name: traefik
+    image: traefik:3.6.4
+    restart: unless-stopped
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - 80:80
+      - 8080:8080
+    networks:
+      lan:
+        ipv4_address: 172.19.0.14
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=Host(`traefik.home.local`)"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.api.entrypoints=web"
+      - "glance.name=Traefik"
+      - "glance.icon=si:traefik"
+      - "glance.url=http://traefik.home.local/"
+      - "glance.description=Reverse Proxy"
+
+networks:
+  lan:
+    external: true

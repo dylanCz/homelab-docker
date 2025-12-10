@@ -1,0 +1,30 @@
+version: "3.5"
+
+services:
+  radarr:
+    container_name: radarr
+    image: linuxserver/radarr:6.0.4
+    restart: unless-stopped
+    logging:
+      driver: json-file
+    network_mode: "container:gluetun"
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: "Europe/London"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - /home/dylan/Docker/Radarr/config:/config
+      - /home/dylan/Docker/data/media:/downloads
+      - /home/dylan/Docker/data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.radarr.loadbalancer.server.port=7878"
+      - "glance.name=Radarr"
+      - "glance.icon=si:radarr"
+      - "glance.url=http://radarr.home.local/"
+      - "glance.description=Movie Manager"
+
+networks:
+  lan:
+    external: true
