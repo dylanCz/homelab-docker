@@ -10,6 +10,8 @@ services:
     networks:
       lan:
         ipv4_address: 172.19.0.20
+    volumes:
+      - /home/dylan/Docker/Grafana/config:/var/lib/grafana
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.grafana.rule=Host(`grafana.home.local`)"
