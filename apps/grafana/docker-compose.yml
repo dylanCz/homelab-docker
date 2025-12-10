@@ -20,7 +20,7 @@ services:
       - "glance.url=http://grafana.home.local/"
       - "glance.description=Monitoring"
       - "glance.id=grafana"
-    user: "472"
+    user: "1000:1000"
 
 networks:
   lan:
