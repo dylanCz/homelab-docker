@@ -25,6 +25,8 @@ services:
       VIRTUAL_HOST: "pihole.home.local" # Same as port traefik config
       WEBTHEME: "default-dark"
       PIHOLE_DOMAIN: "lan"
+    env_file:
+      - secrets.enc.env
     volumes:
       - /home/dylan/Docker/pihole/config:/etc/pihole/
       - /home/dylan/Docker/dnsmasq.d:/etc/dnsmasq.d/
