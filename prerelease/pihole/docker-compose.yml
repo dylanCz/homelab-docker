@@ -19,7 +19,6 @@ services:
       - 1.1.1.1
     environment:
       TZ: "Europe/London"
-      WEBPASSWORD: "${WEBPASSWORD}"
       PIHOLE_DNS_: "149.112.112.112;1.1.1.1"
       ServerIP: "192.168.0.37" # Actual server IP. Matches DHCP conf file IP
       VIRTUAL_HOST: "pihole.home.local" # Same as port traefik config

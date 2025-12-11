@@ -13,8 +13,8 @@ services:
     environment:
       TZ: Europe/London
       GIT_ACCESS_TOKEN: xxx # Replace with Github PAT
-      <<: *poll-config
       SOPS_AGE_KEY_FILE: /run/secrets/sops_age_key
+      <<: *poll-config
     secrets:
       - sops_age_key
     volumes:
