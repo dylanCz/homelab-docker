@@ -12,7 +12,7 @@ services:
       TZ: "Europe/London"
       WEBUI_PORT: 8080
     volumes:
-      - /home/dylan/Docker/QBitTorrent/config:/config
+      - /srv/docker/qbittorrent:/config
       - /home/dylan/Docker/data/torrents:/downloads
     labels:
       - "glance.name=QBitTorrent"

@@ -12,8 +12,8 @@ services:
       - "107" # render
       - "44" # video
     volumes:
-      - /home/dylan/Docker/Jellyfin/config:/config
-      - /home/dylan/Docker/Jellyfin/cache:/cache
+      - /srv/docker/jellyfin/config:/config
+      - /srv/docker/jellyfin/cache:/cache
       - /home/dylan/Docker/data/media:/media
     networks:
       lan:
