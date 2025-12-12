@@ -20,7 +20,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.services.prowlarr.loadbalancer.server.port=9696"
       - "glance.name=Prowlarr"
-      - "glance.icon=si:prowlarr"
+      - "glance.icon=si:podcastindex"
       - "glance.url=http://prowlarr.home.local/"
       - "glance.description=Indexer Manager"
 

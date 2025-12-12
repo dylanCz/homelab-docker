@@ -24,7 +24,7 @@ services:
       - "traefik.http.routers.api.service=api@internal"
       - "traefik.http.routers.api.entrypoints=web"
       - "glance.name=Traefik"
-      - "glance.icon=si:traefik"
+      - "glance.icon=si:traefikproxy"
       - "glance.url=http://traefik.home.local/"
       - "glance.description=Reverse Proxy"
 
