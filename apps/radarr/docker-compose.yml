@@ -15,7 +15,7 @@ services:
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - /home/dylan/Docker/Radarr/config:/config
-      - /home/dylan/Docker/data:/downloads
+      - /home/dylan/Docker/data/torrents:/downloads
       - /home/dylan/Docker/data/media/movies:/movies
     labels:
       - "traefik.enable=true"
