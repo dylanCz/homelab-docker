@@ -10,6 +10,7 @@ services:
     ports:
       - 6881:6881 # qbittorrent
       - 6881:6881/udp # qbittorrent
+      - 6767:6767 # bazarr
       - 7878:7878 # radarr
       - 8989:8989 # sonarr
       - 9696:9696 # prowlarr
@@ -20,6 +21,8 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.qbittorrent.rule=Host(`qbittorrent.home.local`)"
       - "traefik.http.services.qbittorrent.loadbalancer.server.port=8080"
+      - "traefik.http.routers.bazarr.rule=Host(`bazarr.home.local`)"
+      - "traefik.http.routers.bazarr.service=bazarr"
       - "traefik.http.routers.radarr.rule=Host(`radarr.home.local`)"
       - "traefik.http.routers.radarr.service=radarr"
       - "traefik.http.routers.prowlarr.rule=Host(`prowlarr.home.local`)"
