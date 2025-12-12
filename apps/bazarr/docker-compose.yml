@@ -1,0 +1,23 @@
+version: "3.5"
+
+services:
+  bazarr:
+    container_name: bazarr
+    image: linuxserver/bazarr:1.5.3
+    restart: unless-stopped
+    network_mode: "container:gluetun"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /home/dylan/Docker/bazarr/config:/config
+      - /home/dylan/Docker/data/media/movies:/movies
+      - /home/dylan/Docker/data/media/tv:/tv
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.bazarr.loadbalancer.server.port=6767"
+      - "glance.name=Bazarr"
+      - "glance.icon=si:bazarr"
+      - "glance.url=http://bazarr.home.local/"
+      - "glance.description=Subtitle Manager"
