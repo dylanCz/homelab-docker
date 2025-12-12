@@ -11,7 +11,7 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - /home/dylan/Docker/bazarr/config:/config
+      - /srv/docker/bazarr:/config
       - /home/dylan/Docker/data/media/movies:/movies
       - /home/dylan/Docker/data/media/tv:/tv
     labels:

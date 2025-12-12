@@ -14,7 +14,7 @@ services:
       TZ: "Europe/London"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - /home/dylan/Docker/Prowlarr/config:/config
+      - /srv/docker/prowlarr:/config
       - /home/dylan/Docker/data:/data
     labels:
       - "traefik.enable=true"

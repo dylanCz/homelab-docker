@@ -14,7 +14,7 @@ services:
       TZ: "Europe/London"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - /home/dylan/Docker/Radarr/config:/config
+      - /srv/docker/radarr:/config
       - /home/dylan/Docker/data/torrents:/downloads
       - /home/dylan/Docker/data/media/movies:/movies
     labels:
