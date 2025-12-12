@@ -30,14 +30,14 @@ services:
       - "traefik.http.routers.sonarr.rule=Host(`sonarr.home.local`)"
       - "traefik.http.routers.sonarr.service=sonarr"
       - "glance.name=Gluetun"
-      - "glance.icon=si:gluetun"
+      - "glance.icon=si:openvpn"
       - "glance.url=http://gluetun.home.local/"
       - "glance.description=VPN"
     environment:
       - "VPN_SERVICE_PROVIDER=airvpn"
       - "SERVER_COUNTRIES=United Kingdom"
     volumes:
-      - /home/dylan/Docker/Gluetun:/gluetun
+      - /srv/docker/gluetun:/gluetun
 
 networks:
   lan:

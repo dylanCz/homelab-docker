@@ -27,8 +27,8 @@ services:
     env_file:
       - secrets.enc.env
     volumes:
-      - /home/dylan/Docker/pihole/config:/etc/pihole/
-      - /home/dylan/Docker/dnsmasq.d:/etc/dnsmasq.d/
+      - /srv/docker/pihole/config:/etc/pihole/
+      - /srv/docker/pihole/dnsmasq.d:/etc/dnsmasq.d/
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.pihole.rule=Host(`pihole.home.local`)"
