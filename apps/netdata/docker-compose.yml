@@ -37,3 +37,7 @@ volumes:
   netdata_config:
   netdata_lib:
   netdata_cache:
+
+networks:
+  lan:
+    external: true
