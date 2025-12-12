@@ -1,0 +1,55 @@
+pages:
+  - name: Home
+    columns:
+      - size: small
+        widgets:
+          - type: calendar
+
+          - type: twitch-channels
+            channels:
+              - liam
+              - simply
+              - tampaneversleeps
+              - wirtual
+              - zfg1
+
+      - size: full
+        widgets:
+          - type: group
+            widgets:
+              - type: reddit
+                subreddit: ssbm
+                show-thumbnails: true
+                limit: 5
+              - type: reddit
+                subreddit: 2xko
+                show-thumbnails: true
+                limit: 5
+              - type: reddit
+                subreddit: selfhosted
+                show-thumbnails: true
+                limit: 5
+          - type: videos
+            channels:
+              - UClt01z1wHHT7c5lKcU8pxRQ # hbomberguy
+              - UC9OZkS1Mhl5UvKSiPrYqsxg # Wolfey
+              - UCu6S7Z0ln2llqNTLhRKFxJA # Tampa
+
+      - size: small
+        widgets:
+          - type: weather
+            location: Glasgow, United Kingdom
+
+          - type: releases
+            show-source-icon: true
+            repositories:
+              - glanceapp/glance
+              - AlexanderHarrison/TrainingMode-CommunityEdition
+              - YouKnow232/ggxxacpr_overlay
+
+  - name: Homelab
+    columns:
+      - size: full
+        widgets:
+          - type: docker-containers
+            hide-by-default: false
