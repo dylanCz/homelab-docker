@@ -19,7 +19,7 @@ services:
       - sops_age_key
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/dylan/Docker/data:/data
+      - /srv/docker/dococd:/data
     labels:
       - "glance.name=DocoCD"
       - "glance.icon=si:flux"
