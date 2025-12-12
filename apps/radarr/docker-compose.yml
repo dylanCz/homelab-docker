@@ -15,8 +15,7 @@ services:
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - /home/dylan/Docker/Radarr/config:/config
-      - /home/dylan/Docker/data/media:/downloads
-      - /home/dylan/Docker/data:/data
+      - /home/dylan/Docker/data:/downloads
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.radarr.loadbalancer.server.port=7878"

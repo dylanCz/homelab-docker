@@ -15,7 +15,7 @@ services:
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - /home/dylan/Docker/Sonarr/config:/config
-      - /home/dylan/Docker/data:/data
+      - /home/dylan/Docker/data:/downloads
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
