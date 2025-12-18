@@ -14,7 +14,7 @@ services:
     volumes:
       - /srv/docker/jellyfin/config:/config
       - /srv/docker/jellyfin/cache:/cache
-      - /home/dylan/Docker/data/media:/media
+      - /mnt/wd5tb/media:/media
     networks:
       lan:
         ipv4_address: 172.19.0.10

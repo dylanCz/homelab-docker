@@ -15,7 +15,7 @@ services:
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - /srv/docker/prowlarr:/config
-      - /home/dylan/Docker/data:/data
+      - /mnt/wd5tb:/data
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.prowlarr.loadbalancer.server.port=9696"

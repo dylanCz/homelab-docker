@@ -12,8 +12,8 @@ services:
       - TZ=Europe/London
     volumes:
       - /srv/docker/bazarr:/config
-      - /home/dylan/Docker/data/media/movies:/movies
-      - /home/dylan/Docker/data/media/tv:/tv
+      - /mnt/wd5tb/media/movies:/movies
+      - /mnt/wd5tb/media/tv:/tv
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.bazarr.loadbalancer.server.port=6767"
