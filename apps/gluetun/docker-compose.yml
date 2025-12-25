@@ -3,7 +3,7 @@ version: "3.5"
 services:
   gluetun:
     container_name: gluetun
-    image: qmcgaw/gluetun:v3.40.3
+    image: qmcgaw/gluetun:v3.41.0
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
